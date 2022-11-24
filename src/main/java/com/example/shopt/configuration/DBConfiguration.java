@@ -1,6 +1,12 @@
 package com.example.shopt.configuration;
 
+import com.example.shopt.logging.ConnectionLoggingListener;
 import com.zaxxer.hikari.HikariDataSource;
+import net.ttddyy.dsproxy.listener.ChainListener;
+import net.ttddyy.dsproxy.listener.logging.DefaultQueryLogEntryCreator;
+import net.ttddyy.dsproxy.proxy.ProxyConfig;
+import net.ttddyy.dsproxy.support.ProxyConfigSpringXmlSupport;
+import net.ttddyy.dsproxy.support.ProxyDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
