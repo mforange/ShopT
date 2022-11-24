@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-// создает бин repository аннотацией (внутри аннотация @Component) - прочитать про отличие Repository, Service
+@Repository // создает бин repository аннотацией (внутри аннотация @Component) - прочитать про отличие Repository, Service
 @RequiredArgsConstructor
 public class ShopDAOImpl implements ShopDAO {
+
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate; // бин NamedParameterJdbcTemplate, для обращения к базе данных
 
     @Override
