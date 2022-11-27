@@ -15,5 +15,9 @@ public class ShopServiceImpl implements ShopService {
         return shopdao.getProducts();
     }
 
+    public List<ProductDTO> getProductById(Integer id_product){
+        return shopdao.getProductById(id_product);
+    }
+
 
 }

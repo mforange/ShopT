@@ -8,4 +8,6 @@ public interface ShopService {
 
     List<ProductDTO> getProducts();
 
+    List<ProductDTO> getProductById(Integer id_product);
+
 }
