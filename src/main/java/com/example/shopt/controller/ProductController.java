@@ -4,10 +4,7 @@ import com.example.shopt.dto.ProductDTO;
 import com.example.shopt.service.CartService;
 import com.example.shopt.service.ShopService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,10 +16,14 @@ public class ProductController {
 
     private final ShopService shopService;
 
-    private final CartService cartService;
-
     @GetMapping("/get-products")
     public List<ProductDTO> getProducts() {
         return shopService.getProducts();
+    }
+
+    @GetMapping("/")//@GetMapping//("/{id}")
+    public List<ProductDTO> getProductById(@RequestParam("id") Integer id) {
+        Integer a = id;
+        return shopService.getProductById(id);
     }
 }

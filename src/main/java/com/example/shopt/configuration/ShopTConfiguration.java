@@ -13,12 +13,8 @@ public class ShopTConfiguration {
 
     @Bean // создаем бин сервиса BotyaService (один из вариантов, можно также повесить в сервисе аннотацию @Service)
     public ShopService shopService(ShopDAO repository) {
-        return new ShopServiceImpl(repository); //POCHEMOO TAK??
+        return new ShopServiceImpl(repository);
     }
 
-    @Bean // создаем бин сервиса BotyaService (один из вариантов, можно также повесить в сервисе аннотацию @Service)
-    public CartService cartService(ShopDAO repository) {
-        return new CartServiceImpl(repository);
-    }
 
 }

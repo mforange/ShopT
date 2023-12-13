@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @RequiredArgsConstructor
-public class CartServiceImpl implements CartService{
+public class CartServiceImpl implements CartService {
 
     private HashMap<Integer, Integer> cart;
     private Float price;
