@@ -16,14 +16,17 @@ public class ProductController {
 
     private final ShopService shopService;
 
+    private final CartService cartService;
+
     @GetMapping("/get-products")
     public List<ProductDTO> getProducts() {
         return shopService.getProducts();
     }
 
-    @GetMapping("/")//@GetMapping//("/{id}")
-    public List<ProductDTO> getProductById(@RequestParam("id") Integer id) {
-        Integer a = id;
+    @GetMapping("/")
+    public List<ProductDTO> getProductsById(@RequestParam("id") Integer id) {
+
         return shopService.getProductById(id);
     }
+
 }

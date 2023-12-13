@@ -6,9 +6,12 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-@Repository // создает бин repository аннотацией (внутри аннотация @Component) - прочитать про отличие Repository, Service
+@Repository
+// создает бин repository аннотацией (внутри аннотация @Component) - прочитать про отличие Repository, Service
 @RequiredArgsConstructor
 public class ShopDAOImpl implements ShopDAO {
 
@@ -20,8 +23,7 @@ public class ShopDAOImpl implements ShopDAO {
     }
 
     @Override
-    public List<ProductDTO> getProductById(Integer id){
-        return namedParameterJdbcTemplate.query("select * from t_products where id = :id", new BeanPropertyRowMapper<>(ProductDTO.class));
+    public List<ProductDTO> getProductById(Map<String, Object> params) {
+        return namedParameterJdbcTemplate.query("select t.* from t_products t where t.id = :id", params, new BeanPropertyRowMapper<>(ProductDTO.class));
     }
-
 }
