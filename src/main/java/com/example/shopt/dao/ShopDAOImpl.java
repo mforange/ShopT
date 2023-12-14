@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,19 +20,21 @@ public class ShopDAOImpl implements ShopDAO {
 
     @Override
     public List<ProductDTO> getProducts() {
-        return namedParameterJdbcTemplate.query("select * from t_products", new BeanPropertyRowMapper<>(ProductDTO.class));
+        return namedParameterJdbcTemplate.query("select * from t_products",
+                new BeanPropertyRowMapper<>(ProductDTO.class));
     }
 
     @Override
     public List<ProductDTO> getProductById(Map<String, Object> params) {
-        return namedParameterJdbcTemplate.query("select t.* from t_products t where t.id = :id and t.name = :name", params, new BeanPropertyRowMapper<>(ProductDTO.class));
+        return namedParameterJdbcTemplate.query("select t.* from t_products t where t.id = :id",
+                params, new BeanPropertyRowMapper<>(ProductDTO.class));
     }
 
     @Override
     public void addProduct(ProductDTO product) {
-        String sql = "insert into t_products (id, type, name, price) values (:id, :type, :name, :price)";
+        String sql = "insert into t_products (type, name, price) values (:type, :name, :price)";
 
-        MapSqlParameterSource parameters = new MapSqlParameterSource().addValue("id", product.getId())
+        MapSqlParameterSource parameters = new MapSqlParameterSource()
                 .addValue("type", product.getType())
                 .addValue("name", product.getName())
                 .addValue("price", product.getPrice());
