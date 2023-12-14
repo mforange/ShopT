@@ -10,4 +10,8 @@ public interface ShopDAO {
     List<ProductDTO> getProducts();
 
     List<ProductDTO> getProductById(Map<String, Object> params);
+
+    void addProduct(ProductDTO product);
+
+    //void addProduct(Map<String, Object> params);
 }

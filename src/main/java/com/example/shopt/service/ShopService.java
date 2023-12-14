@@ -10,4 +10,6 @@ public interface ShopService {
 
     List<ProductDTO> getProductById(Integer id_product);
 
+    public void addProduct(ProductDTO product);
+
 }

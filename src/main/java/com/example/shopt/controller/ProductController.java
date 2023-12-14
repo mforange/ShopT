@@ -4,6 +4,8 @@ import com.example.shopt.dto.ProductDTO;
 import com.example.shopt.service.CartService;
 import com.example.shopt.service.ShopService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -16,8 +18,6 @@ public class ProductController {
 
     private final ShopService shopService;
 
-    private final CartService cartService;
-
     @GetMapping("/get-products")
     public List<ProductDTO> getProducts() {
         return shopService.getProducts();
@@ -27,6 +27,17 @@ public class ProductController {
     public List<ProductDTO> getProductsById(@RequestParam("id") Integer id) {
 
         return shopService.getProductById(id);
+    }
+
+    @PostMapping("/add-product")
+    public ResponseEntity<String> addProduct(@RequestBody ProductDTO product) {
+        try {
+            shopService.addProduct(product);
+            return new ResponseEntity<>("Product added successfully", HttpStatus.CREATED);
+        }
+        catch (Exception e) {
+            return new ResponseEntity<>("Product has not added" + e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
 }
